@@ -9,8 +9,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using OrderService.Api.Database;
 using OrderService.Api.Repositories.Interface;
 using OrderService.Api.Repositories.Mock;
+using Microsoft.EntityFrameworkCore;
 
 namespace OrderService.Api
 {
@@ -27,6 +29,12 @@ namespace OrderService.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+
+            services.AddDbContext<OSContext>(options =>
+            {
+                options.UseSqlServer(this.Configuration["Data:OrderServiceData:ConnectionString"]);
+            });
+
             services.AddTransient<ICustomerRepository, CustomerFakeRepository>();
             services.AddTransient<IEmployeeRepository, EmployeeFakeRepository>();
             services.AddTransient<IOrderRepository, OrderFakeRepository>();
