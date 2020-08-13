@@ -8,5 +8,7 @@ namespace OrderService.Api
     public static class WebConstants
     {
         public const string CustomersRouteName = "api/customers";
+        public const string EmployeesRouteName = "api/employees";
+        public const string OrdersRouteName = "api/orders";
     }
 }

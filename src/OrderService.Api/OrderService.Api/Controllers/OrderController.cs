@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using OrderService.Api.Controllers.Model;
 using OrderService.Api.Domain;
@@ -9,23 +10,23 @@ using OrderService.Api.Repositories.Interface;
 
 namespace OrderService.Api.Controllers
 {
-    [Route(WebConstants.CustomersRouteName)]
+    [Route(WebConstants.OrdersRouteName)]
     [ApiController]
-    public class CustomerController : ControllerBase
+    public class OrderController : ControllerBase
     {
-        private ICustomerRepository customerRepository;
+        private IOrderRepository orderRepository;
 
-        public CustomerController(ICustomerRepository customerRepository)
+        public OrderController(IOrderRepository orderRepository)
         {
-            this.customerRepository = customerRepository;
+            this.orderRepository = orderRepository;
         }
 
         [HttpGet]
-        public IActionResult Get([FromQuery] CustomerFilter filter)
+        public IActionResult Get([FromQuery] OrderFilter filter)
         {
             try
             {
-                var result = this.customerRepository.Search(filter);
+                var result = this.orderRepository.Search(filter);
                 return Ok(result);
             }
             catch (Exception ex)
@@ -33,14 +34,13 @@ namespace OrderService.Api.Controllers
                 return BadRequest($"Error: { ex.Message }");
             }
         }
-
 
         [HttpGet("{id}")]
         public IActionResult Get(Guid id)
         {
             try
             {
-                var result = this.customerRepository.Get(x => x.Id == id);
+                var result = this.orderRepository.Get(x => x.Id == id);
                 return Ok(result);
             }
             catch (Exception ex)
@@ -49,13 +49,12 @@ namespace OrderService.Api.Controllers
             }
         }
 
-
         [HttpPost]
-        public IActionResult Post([FromBody] Customer model)
+        public IActionResult Post([FromBody] Order model)
         {
             try
             {
-                var result = this.customerRepository.Create(model);
+                var result = this.orderRepository.Create(model);
                 return Ok(result);
             }
             catch (Exception ex)
@@ -64,14 +63,13 @@ namespace OrderService.Api.Controllers
             }
         }
 
-
         [HttpPut("{id}")]
-        public IActionResult Put(Guid id, [FromBody]Customer model)
+        public IActionResult Put(Guid id, [FromBody] Order model)
         {
             try
             {
                 model.Id = id;
-                var result = this.customerRepository.Update(model);
+                var result = this.orderRepository.Update(model);
                 return Ok(result);
             }
             catch (Exception ex)
@@ -79,14 +77,13 @@ namespace OrderService.Api.Controllers
                 return BadRequest($"Error: { ex.Message }");
             }
         }
-
 
         [HttpDelete("{id}")]
         public IActionResult Delete(Guid id)
         {
             try
             {
-                if(this.customerRepository.Delete(x => x.Id == id))
+                if (this.orderRepository.Delete(x => x.Id == id))
                 {
                     return Ok("Removed sucessfully");
                 }

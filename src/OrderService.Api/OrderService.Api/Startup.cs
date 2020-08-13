@@ -28,6 +28,8 @@ namespace OrderService.Api
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddTransient<ICustomerRepository, CustomerFakeRepository>();
+            services.AddTransient<IEmployeeRepository, EmployeeFakeRepository>();
+            services.AddTransient<IOrderRepository, OrderFakeRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
