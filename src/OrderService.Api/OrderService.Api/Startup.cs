@@ -13,6 +13,7 @@ using OrderService.Api.Database;
 using OrderService.Api.Repositories.Interface;
 using OrderService.Api.Repositories.Mock;
 using Microsoft.EntityFrameworkCore;
+using OrderService.Api.Repositories;
 
 namespace OrderService.Api
 {
@@ -35,9 +36,13 @@ namespace OrderService.Api
                 options.UseSqlServer(this.Configuration["Data:OrderServiceData:ConnectionString"]);
             });
 
-            services.AddTransient<ICustomerRepository, CustomerFakeRepository>();
+            /*services.AddTransient<ICustomerRepository, CustomerFakeRepository>();             
             services.AddTransient<IEmployeeRepository, EmployeeFakeRepository>();
-            services.AddTransient<IOrderRepository, OrderFakeRepository>();
+            services.AddTransient<IOrderRepository, OrderFakeRepository>();*/
+
+            services.AddTransient<ICustomerRepository, CustomerRepository>();
+            services.AddTransient<IEmployeeRepository, EmployeeRepository>();
+            services.AddTransient<IOrderRepository, OrderRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -12,10 +12,10 @@ namespace OrderService.Api.Controllers.Model
 
         public string DocumentNumber { get; set; }
 
-        public DateTime BeginBirthDate { get; set; }
+        public DateTime? BeginBirthDate { get; set; } 
 
-        public DateTime EndBirthDate { get; set; }
+        public DateTime? EndBirthDate { get; set; } 
 
-        public GenderEnum Gender { get; set; }
+        public GenderEnum? Gender { get; set; }
     }
 }
