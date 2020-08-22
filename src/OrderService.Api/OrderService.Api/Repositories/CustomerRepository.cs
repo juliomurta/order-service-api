@@ -31,7 +31,7 @@ namespace OrderService.Api.Repositories
             var model = this.Get(func);
             var result = this.context.Customers.Remove(model);
             this.context.SaveChanges();
-            return result.State == EntityState.Deleted;
+            return result.State == EntityState.Detached;
         }
 
         public Customer Get(Func<Customer, bool> func)
