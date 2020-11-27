@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using OrderService.Api.Domain;
-using OrderService.Api.Domain.Model;
+using OrderService.Api.Domain.Filter;
 using OrderService.Api.Repositories.Interface;
 
 namespace OrderService.Api.Controllers

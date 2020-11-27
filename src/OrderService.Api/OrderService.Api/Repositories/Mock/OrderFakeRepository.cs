@@ -1,5 +1,5 @@
 ﻿using OrderService.Api.Domain;
-using OrderService.Api.Domain.Model;
+using OrderService.Api.Domain.Filter;
 using OrderService.Api.Repositories.Interface;
 using System;
 using System.Collections.Generic;
