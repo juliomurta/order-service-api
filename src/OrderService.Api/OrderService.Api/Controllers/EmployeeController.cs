@@ -4,8 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using OrderService.Api.Controllers.Model;
 using OrderService.Api.Domain;
+using OrderService.Api.Domain.Model;
 using OrderService.Api.Repositories.Interface;
 
 namespace OrderService.Api.Controllers
