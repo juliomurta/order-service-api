@@ -13,15 +13,15 @@ namespace OrderService.Api.Domain
         public Guid Id { get; set; }
 
         [Column(TypeName = "nvarchar(30)")]
-        [Required]
+        [Required(ErrorMessage = "O campo Name é obrigatório")]
         public string Name { get; set; }
 
         [Column(TypeName = "nvarchar(15)")]
-        [Required]
+        [Required(ErrorMessage = "O campo DocumentNumber é obrigatório")]
         public string DocumentNumber { get; set; }
 
         [Column(TypeName = "nvarchar(40)")]
-        [Required]
+        [Required(ErrorMessage = "O campo Email é obrigatório")]
         public string Email { get; set; }
     }
 }
