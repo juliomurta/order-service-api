@@ -13,19 +13,25 @@ namespace OrderService.Api.Domain
         public Guid Id { get; set; }
 
         [Column(TypeName = "datetime")]
+        [Required]
         public DateTime Date { get; set; }
 
         [Column(TypeName = "time")]
+        [Required]
         public TimeSpan Start { get; set; }
 
         [Column(TypeName = "time")]
+        [Required]
         public TimeSpan Finish { get; set; }
 
-        [Column(TypeName = "nvarchar(200)")]
+        [Column(TypeName = "nvarchar(500)")]
+        [Required]
         public string Description { get; set; }
 
+        [Required]
         public virtual Guid EmployeeId { get; set; }
 
+        [Required]
         public virtual Guid CustomerId { get; set; }
 
         [ForeignKey("EmployeeId")]

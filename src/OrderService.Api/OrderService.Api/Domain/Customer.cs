@@ -13,9 +13,15 @@ namespace OrderService.Api.Domain
         public Guid Id { get; set; }
 
         [Column(TypeName = "nvarchar(30)")]
+        [Required]
         public string Name { get; set; }
 
         [Column(TypeName = "nvarchar(15)")]
+        [Required]
         public string DocumentNumber { get; set; }
+
+        [Column(TypeName = "nvarchar(40)")]
+        [Required]
+        public string Email { get; set; }
     }
 }

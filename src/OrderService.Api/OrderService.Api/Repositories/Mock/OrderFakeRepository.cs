@@ -25,7 +25,8 @@ namespace OrderService.Api.Repositories.Mock
                 {
                     Id = Guid.NewGuid(),
                     DocumentNumber = "1234567",
-                    Name = "teste"
+                    Name = "teste",
+                    Email = "teste@teste.com"
                 },
                 Employee = new Employee
                 {
@@ -33,7 +34,8 @@ namespace OrderService.Api.Repositories.Mock
                     BirthDate = DateTime.Now,
                     DocumentNumber = "12345678",
                     Gender = Domain.Enum.GenderEnum.Male,
-                    Name = "teste"
+                    Name = "teste",
+                    Email = "teste@teste.com"
                 }
             };
         }
@@ -58,7 +60,8 @@ namespace OrderService.Api.Repositories.Mock
                 {
                     Id = Guid.NewGuid(),
                     DocumentNumber = "1234567",
-                    Name = "teste"
+                    Name = "teste",
+                    Email = "teste@teste.com"
                 },
                 Employee = new Employee
                 {
@@ -66,7 +69,8 @@ namespace OrderService.Api.Repositories.Mock
                     BirthDate = DateTime.Now,
                     DocumentNumber = "12345678",
                     Gender = Domain.Enum.GenderEnum.Male,
-                    Name = "teste"
+                    Name = "teste",
+                    Email = "teste@teste.com"
                 }
             };
         }
@@ -88,7 +92,8 @@ namespace OrderService.Api.Repositories.Mock
                     {
                         Id = Guid.NewGuid(),
                         DocumentNumber = "1234567",
-                        Name = "teste"
+                        Name = "teste",
+                        Email = "teste@teste.com"
                     },
                     Employee = new Employee
                     {
@@ -96,7 +101,8 @@ namespace OrderService.Api.Repositories.Mock
                         BirthDate = DateTime.Now,
                         DocumentNumber = "12345678",
                         Gender = Domain.Enum.GenderEnum.Male,
-                        Name = "teste"
+                        Name = "teste",
+                        Email = "teste@teste.com"
                     }
                 },
                 new Order
@@ -112,7 +118,8 @@ namespace OrderService.Api.Repositories.Mock
                     {
                         Id = Guid.NewGuid(),
                         DocumentNumber = "1234567",
-                        Name = "teste"
+                        Name = "teste",
+                        Email = "teste@teste.com"
                     },
                     Employee = new Employee
                     {
@@ -120,7 +127,8 @@ namespace OrderService.Api.Repositories.Mock
                         BirthDate = DateTime.Now,
                         DocumentNumber = "12345678",
                         Gender = Domain.Enum.GenderEnum.Male,
-                        Name = "teste"
+                        Name = "teste",
+                        Email = "teste@teste.com"
                     }
                 },
                 new Order
@@ -136,7 +144,8 @@ namespace OrderService.Api.Repositories.Mock
                     {
                         Id = Guid.NewGuid(),
                         DocumentNumber = "1234567",
-                        Name = "teste"
+                        Name = "teste",
+                        Email = "teste@teste.com"
                     },
                     Employee = new Employee
                     {
@@ -144,7 +153,8 @@ namespace OrderService.Api.Repositories.Mock
                         BirthDate = DateTime.Now,
                         DocumentNumber = "12345678",
                         Gender = Domain.Enum.GenderEnum.Male,
-                        Name = "teste"
+                        Name = "teste",
+                        Email = "teste@teste.com"
                     }
                 }
             };
@@ -165,7 +175,8 @@ namespace OrderService.Api.Repositories.Mock
                 {
                     Id = Guid.NewGuid(),
                     DocumentNumber = "1234567",
-                    Name = "teste"
+                    Name = "teste",
+                    Email = "teste@teste.com"
                 },
                 Employee = new Employee
                 {
@@ -173,7 +184,8 @@ namespace OrderService.Api.Repositories.Mock
                     BirthDate = DateTime.Now,
                     DocumentNumber = "12345678",
                     Gender = Domain.Enum.GenderEnum.Male,
-                    Name = "teste"
+                    Name = "teste",
+                    Email = "teste@teste.com"
                 }
             };
         }

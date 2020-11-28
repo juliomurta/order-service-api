@@ -12,8 +12,9 @@ namespace OrderService.Api.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(30)", nullable: true),
-                    DocumentNumber = table.Column<string>(type: "nvarchar(15)", nullable: true)
+                    Name = table.Column<string>(type: "nvarchar(30)", nullable: false),
+                    DocumentNumber = table.Column<string>(type: "nvarchar(15)", nullable: false),
+                    Email = table.Column<string>(type: "nvarchar(40)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -25,9 +26,10 @@ namespace OrderService.Api.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(30)", nullable: true),
-                    DocumentNumber = table.Column<string>(type: "nvarchar(15)", nullable: true),
+                    Name = table.Column<string>(type: "nvarchar(30)", nullable: false),
+                    DocumentNumber = table.Column<string>(type: "nvarchar(15)", nullable: false),
                     BirthDate = table.Column<DateTime>(type: "datetime", nullable: false),
+                    Email = table.Column<string>(type: "nvarchar(40)", nullable: false),
                     Gender = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -43,7 +45,7 @@ namespace OrderService.Api.Migrations
                     Date = table.Column<DateTime>(type: "datetime", nullable: false),
                     Start = table.Column<TimeSpan>(type: "time", nullable: false),
                     Finish = table.Column<TimeSpan>(type: "time", nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(200)", nullable: true),
+                    Description = table.Column<string>(type: "nvarchar(500)", nullable: false),
                     EmployeeId = table.Column<Guid>(nullable: false),
                     CustomerId = table.Column<Guid>(nullable: false)
                 },
