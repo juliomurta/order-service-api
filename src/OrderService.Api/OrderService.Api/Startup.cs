@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc; 
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -14,6 +14,8 @@ using OrderService.Api.Repositories.Interface;
 using OrderService.Api.Repositories.Mock;
 using Microsoft.EntityFrameworkCore;
 using OrderService.Api.Repositories;
+using Microsoft.AspNetCore.Identity;
+using OrderService.Api.Database.Seed;
 
 namespace OrderService.Api
 {
@@ -36,6 +38,14 @@ namespace OrderService.Api
                 options.UseSqlServer(this.Configuration["Data:OrderServiceData:ConnectionString"]);
             });
 
+            services.AddDbContext<OSIdentityContext>(options =>
+            {
+                options.UseSqlServer(this.Configuration["Data:OrderServiceIdentity:ConnectionString"]);
+            });
+
+            services.AddIdentity<IdentityUser, IdentityRole>()
+                    .AddEntityFrameworkStores<OSIdentityContext>();
+
             /*services.AddTransient<ICustomerRepository, CustomerFakeRepository>();             
             services.AddTransient<IEmployeeRepository, EmployeeFakeRepository>();
             services.AddTransient<IOrderRepository, OrderFakeRepository>();*/
@@ -43,6 +53,15 @@ namespace OrderService.Api
             services.AddTransient<ICustomerRepository, CustomerRepository>();
             services.AddTransient<IEmployeeRepository, EmployeeRepository>();
             services.AddTransient<IOrderRepository, OrderRepository>();
+
+            services.ConfigureApplicationCookie(options =>
+            {
+                options.Events.OnRedirectToLogin = context =>
+                {
+                    context.Response.StatusCode = 401;
+                    return Task.CompletedTask;
+                };
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -53,7 +72,10 @@ namespace OrderService.Api
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseAuthentication();
             app.UseMvc();
+
+            IdentitySeedData.EnsurePopulated(app);
         }
     }
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using OrderService.Api.Domain;
 using OrderService.Api.Domain.Filter;
@@ -11,6 +12,7 @@ namespace OrderService.Api.Controllers
 {
     [Route(WebConstants.CustomersRouteName)]
     [ApiController]
+    [Authorize]
     public class CustomerController : ControllerBase
     {
         private ICustomerRepository customerRepository;
