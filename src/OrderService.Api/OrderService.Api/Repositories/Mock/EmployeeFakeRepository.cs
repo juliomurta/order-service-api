@@ -18,7 +18,8 @@ namespace OrderService.Api.Repositories.Mock
                 BirthDate = DateTime.Now,
                 DocumentNumber = "12345678",
                 Gender = Domain.Enum.GenderEnum.Male,
-                Name = "teste"
+                Name = "teste",
+                Email = "teste@teste.com"
             };
         }
 
@@ -35,7 +36,8 @@ namespace OrderService.Api.Repositories.Mock
                 BirthDate = DateTime.Now,
                 DocumentNumber = "12345678",
                 Gender = Domain.Enum.GenderEnum.Male,
-                Name = "teste"
+                Name = "teste",
+                Email = "teste@teste.com"
             };
         }
 
@@ -49,7 +51,8 @@ namespace OrderService.Api.Repositories.Mock
                     BirthDate = DateTime.Now,
                     DocumentNumber = "12345678",
                     Gender = Domain.Enum.GenderEnum.Male,
-                    Name = "teste 1"
+                    Name = "teste 1",
+                    Email = "teste@teste.com"
                 },
                 new Employee
                 {
@@ -57,7 +60,8 @@ namespace OrderService.Api.Repositories.Mock
                     BirthDate = DateTime.Now,
                     DocumentNumber = "12345678",
                     Gender = Domain.Enum.GenderEnum.Male,
-                    Name = "teste 2"
+                    Name = "teste 2",
+                    Email = "teste@teste.com"
                 },
                 new Employee
                 {
@@ -65,7 +69,8 @@ namespace OrderService.Api.Repositories.Mock
                     BirthDate = DateTime.Now,
                     DocumentNumber = "12345678",
                     Gender = Domain.Enum.GenderEnum.Male,
-                    Name = "teste 3"
+                    Name = "teste 3",
+                    Email = "teste@teste.com"
                 },
                 new Employee
                 {
@@ -73,7 +78,8 @@ namespace OrderService.Api.Repositories.Mock
                     BirthDate = DateTime.Now,
                     DocumentNumber = "12345678",
                     Gender = Domain.Enum.GenderEnum.Male,
-                    Name = "teste 4"
+                    Name = "teste 4",
+                    Email = "teste@teste.com"
                 },
                 new Employee
                 {
@@ -81,7 +87,8 @@ namespace OrderService.Api.Repositories.Mock
                     BirthDate = DateTime.Now,
                     DocumentNumber = "12345678",
                     Gender = Domain.Enum.GenderEnum.Male,
-                    Name = "teste 5"
+                    Name = "teste 5",
+                    Email = "teste@teste.com"
                 },
                 new Employee
                 {
@@ -89,7 +96,8 @@ namespace OrderService.Api.Repositories.Mock
                     BirthDate = DateTime.Now,
                     DocumentNumber = "12345678",
                     Gender = Domain.Enum.GenderEnum.Male,
-                    Name = "teste 6"
+                    Name = "teste 6",
+                    Email = "teste@teste.com"
                 },
                 new Employee
                 {
@@ -97,7 +105,8 @@ namespace OrderService.Api.Repositories.Mock
                     BirthDate = DateTime.Now,
                     DocumentNumber = "12345678",
                     Gender = Domain.Enum.GenderEnum.Male,
-                    Name = "teste 7"
+                    Name = "teste 7",
+                    Email = "teste@teste.com"
                 }
             };
         }
@@ -110,7 +119,8 @@ namespace OrderService.Api.Repositories.Mock
                 BirthDate = DateTime.Now,
                 DocumentNumber = "12345678",
                 Gender = Domain.Enum.GenderEnum.Male,
-                Name = "teste"
+                Name = "teste",
+                Email = "teste@teste.com"
             };
         }
     }

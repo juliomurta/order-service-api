@@ -25,9 +25,15 @@ namespace OrderService.Api.Migrations
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("DocumentNumber")
+                        .IsRequired()
                         .HasColumnType("nvarchar(15)");
 
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(40)");
+
                     b.Property<string>("Name")
+                        .IsRequired()
                         .HasColumnType("nvarchar(30)");
 
                     b.HasKey("Id");
@@ -44,12 +50,18 @@ namespace OrderService.Api.Migrations
                         .HasColumnType("datetime");
 
                     b.Property<string>("DocumentNumber")
+                        .IsRequired()
                         .HasColumnType("nvarchar(15)");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(40)");
 
                     b.Property<int>("Gender")
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
+                        .IsRequired()
                         .HasColumnType("nvarchar(30)");
 
                     b.HasKey("Id");
@@ -68,7 +80,8 @@ namespace OrderService.Api.Migrations
                         .HasColumnType("datetime");
 
                     b.Property<string>("Description")
-                        .HasColumnType("nvarchar(200)");
+                        .IsRequired()
+                        .HasColumnType("nvarchar(500)");
 
                     b.Property<Guid>("EmployeeId");
 

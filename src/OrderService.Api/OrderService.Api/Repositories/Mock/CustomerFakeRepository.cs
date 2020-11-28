@@ -16,7 +16,8 @@ namespace OrderService.Api.Repositories.Mock
             {
                 Id = Guid.NewGuid(),
                 Name = "Teste",
-                DocumentNumber = "123456789"
+                DocumentNumber = "123456789",
+                Email = "teste@teste.com"
             };
         }
 
@@ -31,7 +32,8 @@ namespace OrderService.Api.Repositories.Mock
             {
                 Id = Guid.NewGuid(),
                 Name = "Teste",
-                DocumentNumber = "123456789"
+                DocumentNumber = "123456789",
+                Email = "teste@teste.com"
             };
         }
 
@@ -43,61 +45,71 @@ namespace OrderService.Api.Repositories.Mock
                 {
                     Id = Guid.NewGuid(),
                     Name = "Teste 1",
-                    DocumentNumber = "123456789"
+                    DocumentNumber = "123456789",
+                    Email = "teste@teste.com"
                 },
                 new Customer
                 {
                     Id = Guid.NewGuid(),
                     Name = "Teste 2",
-                    DocumentNumber = "123456789"
+                    DocumentNumber = "123456789",
+                    Email = "teste@teste.com"
                 },
                 new Customer
                 {
                     Id = Guid.NewGuid(),
                     Name = "Teste 3",
-                    DocumentNumber = "123456789"
+                    DocumentNumber = "123456789",
+                    Email = "teste@teste.com"
                 },
                 new Customer
                 {
                     Id = Guid.NewGuid(),
                     Name = "Teste 4",
-                    DocumentNumber = "123456789"
+                    DocumentNumber = "123456789",
+                    Email = "teste@teste.com"
                 },
                 new Customer
                 {
                     Id = Guid.NewGuid(),
                     Name = "Teste 5",
-                    DocumentNumber = "123456789"
+                    DocumentNumber = "123456789",
+                    Email = "teste@teste.com"
                 },
                 new Customer
                 {
                     Id = Guid.NewGuid(),
                     Name = "Teste 6",
-                    DocumentNumber = "123456789"
+                    DocumentNumber = "123456789",
+                    Email = "teste@teste.com"
                 },
                 new Customer
                 {
                     Id = Guid.NewGuid(),
                     Name = "Teste 7",
-                    DocumentNumber = "123456789"
+                    DocumentNumber = "123456789",
+                    Email = "teste@teste.com"
                 },
                 new Customer
                 {
                     Id = Guid.NewGuid(),
                     Name = "Teste 8",
-                    DocumentNumber = "123456789"
+                    DocumentNumber = "123456789",
+                    Email = "teste@teste.com"
                 },
                 new Customer
                 {
                     Id = Guid.NewGuid(),
                     Name = "Teste 9",
-                    DocumentNumber = "123456789"
+                    DocumentNumber = "123456789",
+                    Email = "teste@teste.com"
                 },
                 new Customer
                 {
                     Id = Guid.NewGuid(),
                     Name = "Teste 10",
-                    DocumentNumber = "123456789"
+                    DocumentNumber = "123456789",
+                    Email = "teste@teste.com"
                 },
             };
         }
@@ -108,7 +120,8 @@ namespace OrderService.Api.Repositories.Mock
             {
                 Id = Guid.NewGuid(),
                 Name = "Teste",
-                DocumentNumber = "123456789"
+                DocumentNumber = "123456789",
+                Email = "teste@teste.com"
             };
         }
     }

@@ -36,12 +36,12 @@ namespace OrderService.Api.Repositories
 
         public Order Get(Func<Order, bool> func)
         {
-            return this.context.Orders.FirstOrDefault(func);
+            return this.Predicate().FirstOrDefault(func);
         }
 
         public IEnumerable<Order> Search(OrderFilter filter)
         {
-            var queryable = this.context.Orders.AsQueryable();
+            var queryable = this.Predicate();
 
             if (!string.IsNullOrEmpty(filter.Description))
             {
@@ -66,6 +66,13 @@ namespace OrderService.Api.Repositories
             var result = this.context.Orders.Update(model);
             this.context.SaveChanges();
             return result.Entity;
+        }
+
+        private IQueryable<Order> Predicate()
+        {
+            return this.context.Orders
+                               .Include(x => x.Customer)
+                               .Include(x => x.Employee);
         }
     }
 }

@@ -1,0 +1,415 @@
+{
+	"info": {
+		"_postman_id": "b263e99a-89ed-4723-be79-431dad210f6a",
+		"name": "order-service",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "searchCustomer",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "searchCustomer",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "name",
+						"value": "Teste",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "http://localhost:64569/api/customers?documentNumber=123123123",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "64569",
+					"path": [
+						"api",
+						"customers"
+					],
+					"query": [
+						{
+							"key": "documentNumber",
+							"value": "123123123"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:64569/api/customers/793e54de-6d9e-4c75-b666-63ba3cae589d",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:64569/api/customers/8ac945b5-1ce2-408a-f179-08d893d486d1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "64569",
+					"path": [
+						"api",
+						"customers",
+						"8ac945b5-1ce2-408a-f179-08d893d486d1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:64569/api/customers",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"rock lee\",\n\t\"documentNumber\": \"123123123\",\n    \"email\": \"teste@teste.com\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:64569/api/customers",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "64569",
+					"path": [
+						"api",
+						"customers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:64569/api/customers/80B94CD0-7979-4D95-F176-08D893D486D1",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"julio murta editado\",\n\t\"documentNumber\": \"987654321\",\n    \"email\": \"teste@teste.com\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:64569/api/customers/80B94CD0-7979-4D95-F176-08D893D486D1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "64569",
+					"path": [
+						"api",
+						"customers",
+						"80B94CD0-7979-4D95-F176-08D893D486D1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:64569/api/customers/793e54de-6d9e-4c75-b666-63ba3cae589d",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "http://localhost:64569/api/customers/80B94CD0-7979-4D95-F176-08D893D486D1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "64569",
+					"path": [
+						"api",
+						"customers",
+						"80B94CD0-7979-4D95-F176-08D893D486D1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:64569/api/employees?name=teste&documentNumber=12345466",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:64569/api/employees",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "64569",
+					"path": [
+						"api",
+						"employees"
+					]
+				},
+				"description": "seatchEmployees"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:64569/api/employees/793e54de-6d9e-4c75-b666-63ba3cae589d",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:64569/api/employees/FF85CC2D-E0F5-43AD-1974-08D893D5393D",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "64569",
+					"path": [
+						"api",
+						"employees",
+						"FF85CC2D-E0F5-43AD-1974-08D893D5393D"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:64569/api/employees",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"pollito mil\",\n\t\"documentNumber\": \"123456789\",\n\t\"birthDate\": \"2020-08-12\",\n    \"email\": \"teste@teste.com\",\n\t\"gender\": 1\n}"
+				},
+				"url": {
+					"raw": "http://localhost:64569/api/employees",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "64569",
+					"path": [
+						"api",
+						"employees"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:64569/api/employees/793e54de-6d9e-4c75-b666-63ba3cae589d",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"ticoliro murta\",\n\t\"documentNumber\": \"123456789\",\n\t\"birthDate\": \"2020-08-12\",\n    \"email\": \"teste@teste.com\",\n\t\"gender\": 2\n}"
+				},
+				"url": {
+					"raw": "http://localhost:64569/api/employees/C97086AB-F906-4746-1975-08D893D5393D",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "64569",
+					"path": [
+						"api",
+						"employees",
+						"C97086AB-F906-4746-1975-08D893D5393D"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:64569/api/employees/793e54de-6d9e-4c75-b666-63ba3cae589d",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "http://localhost:64569/api/employees/C97086AB-F906-4746-1975-08D893D5393D",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "64569",
+					"path": [
+						"api",
+						"employees",
+						"C97086AB-F906-4746-1975-08D893D5393D"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:64569/api/orders?customerId=793e54de-6d9e-4c75-b666-63ba3cae589d&employeeId=793e54de-6d9e-4c75-b666-63ba3cae589d&description=teste",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:64569/api/orders?description=teste",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "64569",
+					"path": [
+						"api",
+						"orders"
+					],
+					"query": [
+						{
+							"key": "description",
+							"value": "teste"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:64569/api/orders/793e54de-6d9e-4c75-b666-63ba3cae589d",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:64569/api/orders/7AEFD378-093F-40AE-1A6B-08D893D5D77D",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "64569",
+					"path": [
+						"api",
+						"orders",
+						"7AEFD378-093F-40AE-1A6B-08D893D5D77D"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:64569/api/orders",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"customerId\": \"53111791-087C-4A11-F177-08D893D486D1\",\n\t\"employeeId\": \"4CDA1FD3-253F-4C07-1976-08D893D5393D\",\n\t\"description\": \"teste editado\",\n\t\"date\": \"2020-08-25\",\n\t\"start\": \"09:00\",\n\t\"finish\": \"14:00\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:64569/api/orders",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "64569",
+					"path": [
+						"api",
+						"orders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:64569/api/employees/793e54de-6d9e-4c75-b666-63ba3cae589d",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"customerId\": \"53111791-087C-4A11-F177-08D893D486D1\",\n\t\"employeeId\": \"FF85CC2D-E0F5-43AD-1974-08D893D5393D\",\n\t\"description\": \"teste teste teste teste teste teste teste teste teste teste teste teste teste\",\n\t\"date\": \"2020-08-25\",\n\t\"start\": \"08:00\",\n\t\"finish\": \"18:00\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:64569/api/orders/7AEFD378-093F-40AE-1A6B-08D893D5D77D",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "64569",
+					"path": [
+						"api",
+						"orders",
+						"7AEFD378-093F-40AE-1A6B-08D893D5D77D"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:64569/api/employees/793e54de-6d9e-4c75-b666-63ba3cae589d",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "http://localhost:64569/api/employees/793e54de-6d9e-4c75-b666-63ba3cae589d",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "64569",
+					"path": [
+						"api",
+						"employees",
+						"793e54de-6d9e-4c75-b666-63ba3cae589d"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

@@ -13,19 +13,25 @@ namespace OrderService.Api.Domain
         public Guid Id { get; set; }
 
         [Column(TypeName = "datetime")]
+        [Required(ErrorMessage = "O campo Date é obrigatório")]
         public DateTime Date { get; set; }
 
         [Column(TypeName = "time")]
+        [Required(ErrorMessage = "O campo Start é obrigatório")]
         public TimeSpan Start { get; set; }
 
         [Column(TypeName = "time")]
+        [Required(ErrorMessage = "O campo Finish é obrigatório")]
         public TimeSpan Finish { get; set; }
 
-        [Column(TypeName = "nvarchar(200)")]
+        [Column(TypeName = "nvarchar(500)")]
+        [Required(ErrorMessage = "O campo Description é obrigatório")]
         public string Description { get; set; }
 
+        [Required]
         public virtual Guid EmployeeId { get; set; }
 
+        [Required]
         public virtual Guid CustomerId { get; set; }
 
         [ForeignKey("EmployeeId")]
