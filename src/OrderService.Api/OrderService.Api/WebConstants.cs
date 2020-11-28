@@ -10,5 +10,6 @@ namespace OrderService.Api
         public const string CustomersRouteName = "api/customers";
         public const string EmployeesRouteName = "api/employees";
         public const string OrdersRouteName = "api/orders";
+        public const string AccountRouteName = "api/account";
     }
 }

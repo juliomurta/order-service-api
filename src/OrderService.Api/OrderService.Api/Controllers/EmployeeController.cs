@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using OrderService.Api.Domain;
@@ -12,6 +13,7 @@ namespace OrderService.Api.Controllers
 {
     [Route(WebConstants.EmployeesRouteName)]
     [ApiController]
+    [Authorize]
     public class EmployeeController : ControllerBase
     {
         private IEmployeeRepository employeeRepository;
