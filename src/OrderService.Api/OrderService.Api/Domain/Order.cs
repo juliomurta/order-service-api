@@ -28,16 +28,16 @@ namespace OrderService.Api.Domain
         [Required(ErrorMessage = "O campo Description é obrigatório")]
         public string Description { get; set; }
 
-        [Required]
+        //[Required]
         public virtual Guid EmployeeId { get; set; }
 
-        [Required]
+        //[Required]
         public virtual Guid CustomerId { get; set; }
 
-        [ForeignKey("EmployeeId")]
+        //[ForeignKey("EmployeeId")]
         public virtual Employee Employee { get; set; }
 
-        [ForeignKey("CustomerId")]
+        //[ForeignKey("CustomerId")]
         public virtual Customer Customer { get; set; }
     }
 }

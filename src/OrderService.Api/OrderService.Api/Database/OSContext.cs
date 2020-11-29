@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using OrderService.Api.Database.Configurations;
 using OrderService.Api.Domain;
 using System;
 using System.Collections.Generic;
@@ -19,5 +20,11 @@ namespace OrderService.Api.Database
         public DbSet<Customer> Customers { get; set; }
 
         public DbSet<Order> Orders { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.ApplyConfiguration(new OrderConfiguration());
+            base.OnModelCreating(modelBuilder);
+        }
     }
 }

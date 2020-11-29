@@ -103,14 +103,14 @@ namespace OrderService.Api.Migrations
             modelBuilder.Entity("OrderService.Api.Domain.Order", b =>
                 {
                     b.HasOne("OrderService.Api.Domain.Customer", "Customer")
-                        .WithMany()
+                        .WithMany("Orders")
                         .HasForeignKey("CustomerId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("OrderService.Api.Domain.Employee", "Employee")
-                        .WithMany()
+                        .WithMany("Orders")
                         .HasForeignKey("EmployeeId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Restrict);
                 });
 #pragma warning restore 612, 618
         }

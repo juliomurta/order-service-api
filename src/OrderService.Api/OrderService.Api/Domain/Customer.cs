@@ -23,5 +23,7 @@ namespace OrderService.Api.Domain
         [Column(TypeName = "nvarchar(40)")]
         [Required(ErrorMessage = "O campo Email é obrigatório")]
         public string Email { get; set; }
+
+        public IEnumerable<Order> Orders { get; set; }
     }
 }

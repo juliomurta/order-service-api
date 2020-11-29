@@ -36,12 +36,12 @@ namespace OrderService.Api.Repositories
 
         public Customer Get(Func<Customer, bool> func)
         {
-            return this.context.Customers.FirstOrDefault(func);
+            return this.Predicate().FirstOrDefault(func);
         }
 
         public IEnumerable<Customer> Search(CustomerFilter filter)
         {
-            var queryable = this.context.Customers.AsQueryable();
+            var queryable = this.Predicate();
 
             if (!string.IsNullOrEmpty(filter.DocumentNumber))
             {
@@ -53,7 +53,7 @@ namespace OrderService.Api.Repositories
                 queryable = queryable.Where(x => x.Name.ToLower().Contains(filter.Name.ToLower()));
             }
 
-            return queryable.AsEnumerable();
+            return queryable.ToList();
         }
 
         public Customer Update(Customer model)
@@ -61,6 +61,13 @@ namespace OrderService.Api.Repositories
             var result = this.context.Customers.Update(model);
             this.context.SaveChanges();
             return result.Entity;
+        }
+
+        private IQueryable<Customer> Predicate()
+        {
+            return this.context.Customers
+                               .Include(x => x.Orders)
+                               .AsQueryable();
         }
     }
 }

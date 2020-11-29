@@ -138,7 +138,7 @@
 					"formdata": []
 				},
 				"url": {
-					"raw": "http://localhost:64569/api/customers/80B94CD0-7979-4D95-F176-08D893D486D1",
+					"raw": "http://localhost:64569/api/customers/AA2B403B-BFF4-461D-AD48-08D8947FB859",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -147,7 +147,7 @@
 					"path": [
 						"api",
 						"customers",
-						"80B94CD0-7979-4D95-F176-08D893D486D1"
+						"AA2B403B-BFF4-461D-AD48-08D8947FB859"
 					]
 				}
 			},
@@ -264,7 +264,7 @@
 					"formdata": []
 				},
 				"url": {
-					"raw": "http://localhost:64569/api/employees/C97086AB-F906-4746-1975-08D893D5393D",
+					"raw": "http://localhost:64569/api/employees/B0A9724F-6F36-496B-BA60-08D8947FBCC0",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -273,7 +273,7 @@
 					"path": [
 						"api",
 						"employees",
-						"C97086AB-F906-4746-1975-08D893D5393D"
+						"B0A9724F-6F36-496B-BA60-08D8947FBCC0"
 					]
 				}
 			},
@@ -338,7 +338,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"customerId\": \"53111791-087C-4A11-F177-08D893D486D1\",\n\t\"employeeId\": \"4CDA1FD3-253F-4C07-1976-08D893D5393D\",\n\t\"description\": \"teste editado\",\n\t\"date\": \"2020-08-25\",\n\t\"start\": \"09:00\",\n\t\"finish\": \"14:00\"\n}"
+					"raw": "{\n\t\"customerId\": \"FCD92AEB-5709-447A-8142-08D8948297B6\",\n\t\"employeeId\": \"E5BD6870-875C-4615-BCA8-08D894829B74\",\n\t\"description\": \"teste editado\",\n\t\"date\": \"2020-08-25\",\n\t\"start\": \"09:00\",\n\t\"finish\": \"14:00\"\n}"
 				},
 				"url": {
 					"raw": "http://localhost:64569/api/orders",
@@ -395,7 +395,7 @@
 					"formdata": []
 				},
 				"url": {
-					"raw": "http://localhost:64569/api/employees/793e54de-6d9e-4c75-b666-63ba3cae589d",
+					"raw": "http://localhost:64569/api/orders/EF9F0C57-46BA-4CCB-E3D1-08D89482B0AF",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -403,8 +403,8 @@
 					"port": "64569",
 					"path": [
 						"api",
-						"employees",
-						"793e54de-6d9e-4c75-b666-63ba3cae589d"
+						"orders",
+						"EF9F0C57-46BA-4CCB-E3D1-08D89482B0AF"
 					]
 				}
 			},
