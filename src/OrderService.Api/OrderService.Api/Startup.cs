@@ -16,6 +16,9 @@ using Microsoft.EntityFrameworkCore;
 using OrderService.Api.Repositories;
 using Microsoft.AspNetCore.Identity;
 using OrderService.Api.Database.Seed;
+using Microsoft.OpenApi.Models;
+using Microsoft.Extensions.PlatformAbstractions;
+using System.IO;
 
 namespace OrderService.Api
 {
@@ -62,6 +65,27 @@ namespace OrderService.Api
                     return Task.CompletedTask;
                 };
             });
+
+            services.AddSwaggerGen(x =>
+            {
+                x.SwaggerDoc("v1", new OpenApiInfo
+                { 
+                    Title = "Ordem de Serviço - API",
+                    Version = "v1",
+                    Description = "Documentação da API de Ordens de Serviço",
+                    Contact = new OpenApiContact
+                    {
+                        Name = "Julio Murta",
+                        Url = new Uri("https://github.com/juliomurta")
+                    }
+                });
+
+                string appPath = PlatformServices.Default.Application.ApplicationBasePath;
+                string appName = PlatformServices.Default.Application.ApplicationName;
+                string xmlDoc = Path.Combine(appPath, $"{appName}.xml");
+
+                x.IncludeXmlComments(xmlDoc);
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -70,6 +94,11 @@ namespace OrderService.Api
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseSwagger();
+                app.UseSwaggerUI(c =>
+                {
+                    c.SwaggerEndpoint("/swagger/v1/swagger.json", "Ordens de Serviços");
+                });
             }
 
             app.UseAuthentication();
