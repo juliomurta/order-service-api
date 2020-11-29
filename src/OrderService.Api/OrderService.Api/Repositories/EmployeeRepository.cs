@@ -36,12 +36,12 @@ namespace OrderService.Api.Repositories
 
         public Employee Get(Func<Employee, bool> func)
         {
-            return this.context.Employees.FirstOrDefault(func);
+            return this.Predicate().FirstOrDefault(func);
         }
 
         public IEnumerable<Employee> Search(EmployeeFilter filter)
         {
-            var queryable = this.context.Employees.AsQueryable();
+            var queryable = this.Predicate();
 
             if (!string.IsNullOrEmpty(filter.Name))
             {
@@ -68,7 +68,7 @@ namespace OrderService.Api.Repositories
                 queryable = queryable.Where(x => x.BirthDate <= filter.EndBirthDate.Value);
             }
 
-            return queryable.AsEnumerable();
+            return queryable.ToList();
         }
 
         public Employee Update(Employee model)
@@ -76,6 +76,13 @@ namespace OrderService.Api.Repositories
             var result = this.context.Employees.Update(model);
             this.context.SaveChanges();
             return result.Entity;
+        }
+
+        private IQueryable<Employee> Predicate()
+        {
+            return this.context.Employees
+                               .Include(x => x.Orders)
+                               .AsQueryable();
         }
     }
 }

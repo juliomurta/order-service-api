@@ -32,5 +32,7 @@ namespace OrderService.Api.Domain
         [Column(TypeName = "int")]
         [Required(ErrorMessage = "O campo Gender é obrigatório")]
         public GenderEnum Gender { get; set; }
+
+        public IEnumerable<Order> Orders { get; set; }
     }
 }

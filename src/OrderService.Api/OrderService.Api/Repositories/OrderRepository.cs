@@ -58,7 +58,7 @@ namespace OrderService.Api.Repositories
                 queryable = queryable.Where(x => x.CustomerId == filter.CustomerId);
             }
 
-            return queryable.AsEnumerable();
+            return queryable.ToList();
         }
 
         public Order Update(Order model)
