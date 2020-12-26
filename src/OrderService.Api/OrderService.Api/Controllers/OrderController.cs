@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using OrderService.Api.Domain;
 using OrderService.Api.Domain.Filter;
 using OrderService.Api.Repositories.Interface;
+using OrderService.Api.Service.Interface;
 
 namespace OrderService.Api.Controllers
 {
@@ -16,11 +17,11 @@ namespace OrderService.Api.Controllers
     [Authorize]
     public class OrderController : ControllerBase
     {
-        private IOrderRepository orderRepository;
+        private IOrderService orderService;
 
-        public OrderController(IOrderRepository orderRepository)
+        public OrderController(IOrderService orderService)
         {
-            this.orderRepository = orderRepository;
+            this.orderService = orderService;
         }
 
         [HttpGet]
@@ -28,7 +29,7 @@ namespace OrderService.Api.Controllers
         {
             try
             {
-                var result = this.orderRepository.Search(filter);
+                var result = this.orderService.Search(filter);
                 return Ok(result);
             }
             catch (Exception ex)
@@ -42,7 +43,7 @@ namespace OrderService.Api.Controllers
         {
             try
             {
-                var result = this.orderRepository.Get(x => x.Id == id);
+                var result = this.orderService.Get(x => x.Id == id);
                 return Ok(result);
             }
             catch (Exception ex)
@@ -56,7 +57,7 @@ namespace OrderService.Api.Controllers
         {
             try
             {
-                var result = this.orderRepository.Create(model);
+                var result = this.orderService.Create(model);
                 return Ok(result);
             }
             catch (Exception ex)
@@ -71,7 +72,7 @@ namespace OrderService.Api.Controllers
             try
             {
                 model.Id = id;
-                var result = this.orderRepository.Update(model);
+                var result = this.orderService.Update(model);
                 return Ok(result);
             }
             catch (Exception ex)
@@ -85,7 +86,7 @@ namespace OrderService.Api.Controllers
         {
             try
             {
-                if (this.orderRepository.Delete(x => x.Id == id))
+                if (this.orderService.Delete(x => x.Id == id))
                 {
                     return Ok("Removed sucessfully");
                 }

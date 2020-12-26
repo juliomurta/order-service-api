@@ -19,6 +19,8 @@ using OrderService.Api.Database.Seed;
 using Microsoft.OpenApi.Models;
 using Microsoft.Extensions.PlatformAbstractions;
 using System.IO;
+using OrderService.Api.Service.Interface;
+using OrderService.Api.Service;
 
 namespace OrderService.Api
 {
@@ -49,13 +51,17 @@ namespace OrderService.Api
             services.AddIdentity<IdentityUser, IdentityRole>()
                     .AddEntityFrameworkStores<OSIdentityContext>();
 
-            /*services.AddTransient<ICustomerRepository, CustomerFakeRepository>();             
+            services.AddTransient<ICustomerRepository, CustomerFakeRepository>();             
             services.AddTransient<IEmployeeRepository, EmployeeFakeRepository>();
-            services.AddTransient<IOrderRepository, OrderFakeRepository>();*/
+            services.AddTransient<IOrderRepository, OrderFakeRepository>();
 
-            services.AddTransient<ICustomerRepository, CustomerRepository>();
+            /*services.AddTransient<ICustomerRepository, CustomerRepository>();
             services.AddTransient<IEmployeeRepository, EmployeeRepository>();
-            services.AddTransient<IOrderRepository, OrderRepository>();
+            services.AddTransient<IOrderRepository, OrderRepository>();*/
+
+            services.AddTransient<ICustomerService, CustomerService>();
+            services.AddTransient<IEmployeeService, EmployeeService>();
+            services.AddTransient<IOrderService, OsService>();
 
             services.ConfigureApplicationCookie(options =>
             {
