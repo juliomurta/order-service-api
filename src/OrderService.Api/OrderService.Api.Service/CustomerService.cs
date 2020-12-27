@@ -1,9 +1,12 @@
-﻿using OrderService.Api.Domain;
+﻿using OrderService.Api.Common.Validators;
+using OrderService.Api.Common.Validators.Interface;
+using OrderService.Api.Domain;
 using OrderService.Api.Domain.Filter;
 using OrderService.Api.Repositories.Interface;
 using OrderService.Api.Service.Interface;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 
 namespace OrderService.Api.Service
@@ -19,13 +22,18 @@ namespace OrderService.Api.Service
 
         public Customer Create(Customer model)
         {
+            if (!this.IsValidDocumentNumber(model.DocumentNumber))
+            {
+                throw new ArgumentException("CPf/CNPJ inválido");
+            }
+
             var alreadyExists = this.customerRepository.Get(x => x.DocumentNumber == model.DocumentNumber);
             if (alreadyExists != null)
             {
                 throw new ArgumentException("Já existe um cliente cadastrado com esse Cpf/Cnpj.");
             }
-
-            if (string.IsNullOrEmpty(model.Email) || !model.Email.Contains('@') || !model.Email.Contains('.'))
+            
+            if (!this.IsEmailValid(model.Email))
             {
                 throw new ArgumentException("O e-mail do cliente não é válido.");
             }
@@ -52,17 +60,62 @@ namespace OrderService.Api.Service
 
         public Customer Get(Func<Customer, bool> func)
         {
-            throw new NotImplementedException();
+            return this.customerRepository.Get(func);
         }
 
         public IEnumerable<Customer> Search(CustomerFilter filter)
         {
-            throw new NotImplementedException();
+            return this.customerRepository.Search(filter);
         }
 
         public Customer Update(Customer model)
         {
-            throw new NotImplementedException();
+            if (!this.IsValidDocumentNumber(model.DocumentNumber))
+            {
+                throw new ArgumentException("CPf/CNPJ inválido");
+            }
+
+            if (!this.IsEmailValid(model.Email))
+            {
+                throw new ArgumentException("O e-mail do cliente não é válido.");
+            }
+
+            return this.customerRepository.Update(model);
+        }
+
+        private bool IsEmailValid(string email)
+        {
+            return new EmailAddressAttribute().IsValid(email);
+        }
+
+        private bool IsValidDocumentNumber(string documentNumber)
+        {
+            const int cnpjSize = 14;
+            const int cpfSize  = 11;
+
+            if (documentNumber.All(char.IsDigit))
+            {
+                IIdentificationDocument identificationDocument = null;
+
+                if (documentNumber.Length == cpfSize)
+                {
+                    identificationDocument = new CpfValidator();
+                }
+                else if (documentNumber.Length == cnpjSize)
+                {
+                    identificationDocument = new CnpjValidator();
+                }
+                else
+                {
+                    identificationDocument = new NullDocumentValidator();
+                }
+
+                return identificationDocument.IsValid(documentNumber);
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }

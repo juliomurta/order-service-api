@@ -9,6 +9,8 @@ namespace OrderService.Api.Domain
 {
     public class Customer
     {
+        private string documentNumber = string.Empty;
+
         [Key]
         public Guid Id { get; set; }
 
@@ -18,7 +20,25 @@ namespace OrderService.Api.Domain
 
         [Column(TypeName = "nvarchar(15)")]
         [Required(ErrorMessage = "O campo DocumentNumber é obrigatório")]
-        public string DocumentNumber { get; set; }
+        public string DocumentNumber
+        {
+            get
+            {
+                if (!string.IsNullOrEmpty(this.documentNumber))
+                {
+                    return this.documentNumber.Replace(".", string.Empty)
+                                              .Replace("-", string.Empty)
+                                              .Replace("/", string.Empty);
+                }
+
+                return string.Empty;
+            }
+
+            set
+            {
+                this.documentNumber = value;
+            }
+        }
 
         [Column(TypeName = "nvarchar(40)")]
         [Required(ErrorMessage = "O campo Email é obrigatório")]
