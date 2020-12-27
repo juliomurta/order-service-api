@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using OrderService.Api.Domain;
 using OrderService.Api.Domain.Filter;
-using OrderService.Api.Repositories.Interface;
+using OrderService.Api.Service.Interface;
 
 namespace OrderService.Api.Controllers
 {
@@ -15,11 +15,11 @@ namespace OrderService.Api.Controllers
     [Authorize]
     public class CustomerController : ControllerBase
     {
-        private ICustomerRepository customerRepository;
+        private ICustomerService customerService;
 
-        public CustomerController(ICustomerRepository customerRepository)
+        public CustomerController(ICustomerService customerService)
         {
-            this.customerRepository = customerRepository;
+            this.customerService = customerService;
         }
 
         [HttpGet]
@@ -27,7 +27,7 @@ namespace OrderService.Api.Controllers
         {
             try
             {
-                var result = this.customerRepository.Search(filter);
+                var result = this.customerService.Search(filter);
                 return Ok(result);
             }
             catch (Exception ex)
@@ -42,7 +42,7 @@ namespace OrderService.Api.Controllers
         {
             try
             {
-                var result = this.customerRepository.Get(x => x.Id == id);
+                var result = this.customerService.Get(x => x.Id == id);
                 return Ok(result);
             }
             catch (Exception ex)
@@ -57,7 +57,7 @@ namespace OrderService.Api.Controllers
         {
             try
             {
-                var result = this.customerRepository.Create(model);
+                var result = this.customerService.Create(model);
                 return Ok(result);
             }
             catch (Exception ex)
@@ -73,7 +73,7 @@ namespace OrderService.Api.Controllers
             try
             {
                 model.Id = id;
-                var result = this.customerRepository.Update(model);
+                var result = this.customerService.Update(model);
                 return Ok(result);
             }
             catch (Exception ex)
@@ -88,7 +88,7 @@ namespace OrderService.Api.Controllers
         {
             try
             {
-                if(this.customerRepository.Delete(x => x.Id == id))
+                if(this.customerService.Delete(x => x.Id == id))
                 {
                     return Ok("Removed sucessfully");
                 }

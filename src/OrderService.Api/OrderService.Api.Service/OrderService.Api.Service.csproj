@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\OrderService.Api.Common\OrderService.Api.Common.csproj" />
+    <ProjectReference Include="..\OrderService.Api.Domain\OrderService.Api.Domain.csproj" />
+    <ProjectReference Include="..\OrderService.Api.Repositories\OrderService.Api.Repositories.csproj" />
+  </ItemGroup>
+
+</Project>

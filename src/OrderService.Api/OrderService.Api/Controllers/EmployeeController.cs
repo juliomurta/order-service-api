@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using OrderService.Api.Domain;
 using OrderService.Api.Domain.Filter;
-using OrderService.Api.Repositories.Interface;
+using OrderService.Api.Service.Interface;
 
 namespace OrderService.Api.Controllers
 {
@@ -16,11 +16,11 @@ namespace OrderService.Api.Controllers
     [Authorize]
     public class EmployeeController : ControllerBase
     {
-        private IEmployeeRepository employeeRepository;
+        private IEmployeeService employeeService;
 
-        public EmployeeController(IEmployeeRepository employeeRepository)
+        public EmployeeController(IEmployeeService employeeService)
         {
-            this.employeeRepository = employeeRepository;
+            this.employeeService = employeeService;
         }
 
         [HttpGet]
@@ -28,7 +28,7 @@ namespace OrderService.Api.Controllers
         {
             try
             {
-                var result = this.employeeRepository.Search(filter);
+                var result = this.employeeService.Search(filter);
                 return Ok(result);
             }
             catch (Exception ex)
@@ -42,7 +42,7 @@ namespace OrderService.Api.Controllers
         {
             try
             {
-                var result = this.employeeRepository.Get(x => x.Id == id);
+                var result = this.employeeService.Get(x => x.Id == id);
                 return Ok(result);
             }
             catch (Exception ex)
@@ -56,7 +56,7 @@ namespace OrderService.Api.Controllers
         {
             try
             {
-                var result = this.employeeRepository.Create(model);
+                var result = this.employeeService.Create(model);
                 return Ok(result);
             }
             catch (Exception ex)
@@ -71,7 +71,7 @@ namespace OrderService.Api.Controllers
             try
             {
                 model.Id = id;
-                var result = this.employeeRepository.Update(model);
+                var result = this.employeeService.Update(model);
                 return Ok(result);
             }
             catch (Exception ex)
@@ -85,7 +85,7 @@ namespace OrderService.Api.Controllers
         {
             try
             {
-                if (this.employeeRepository.Delete(x => x.Id == id))
+                if (this.employeeService.Delete(x => x.Id == id))
                 {
                     return Ok("Removed sucessfully");
                 }
