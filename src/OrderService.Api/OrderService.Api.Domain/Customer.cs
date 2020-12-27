@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
-using System.Threading.Tasks;
+using OrderService.Api.Common.Extensions;
 
 namespace OrderService.Api.Domain
 {
@@ -24,14 +24,7 @@ namespace OrderService.Api.Domain
         {
             get
             {
-                if (!string.IsNullOrEmpty(this.documentNumber))
-                {
-                    return this.documentNumber.Replace(".", string.Empty)
-                                              .Replace("-", string.Empty)
-                                              .Replace("/", string.Empty);
-                }
-
-                return string.Empty;
+                return this.documentNumber.RemoveCpfCnpjPunctuation();
             }
 
             set

@@ -6,7 +6,6 @@ using OrderService.Api.Repositories.Interface;
 using OrderService.Api.Service.Interface;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 
 namespace OrderService.Api.Service
@@ -24,7 +23,7 @@ namespace OrderService.Api.Service
         {
             if (!this.IsValidDocumentNumber(model.DocumentNumber))
             {
-                throw new ArgumentException("CPf/CNPJ inválido");
+                throw new ArgumentException("CPF/CNPJ inválido");
             }
 
             var alreadyExists = this.customerRepository.Get(x => x.DocumentNumber == model.DocumentNumber);
@@ -32,8 +31,7 @@ namespace OrderService.Api.Service
             {
                 throw new ArgumentException("Já existe um cliente cadastrado com esse Cpf/Cnpj.");
             }
-            
-            if (!this.IsEmailValid(model.Email))
+            else if (!new EmailValidator().IsEmailValid(model.Email))
             {
                 throw new ArgumentException("O e-mail do cliente não é válido.");
             }
@@ -49,10 +47,9 @@ namespace OrderService.Api.Service
             {
                 throw new ArgumentException("Cliente não encontrado.");
             }
-
-            if (customer.Orders != null && customer.Orders.Count() > 0)
+            else if (customer.Orders != null && customer.Orders.Count() > 0)
             {
-                throw new Exception("Não é possível excluir um cliente com Ordens de Serviço associadas");
+                throw new Exception("Não é possível excluir um cliente com Ordens de Serviço associadas.");
             }
 
             return this.customerRepository.Delete(func);
@@ -72,10 +69,9 @@ namespace OrderService.Api.Service
         {
             if (!this.IsValidDocumentNumber(model.DocumentNumber))
             {
-                throw new ArgumentException("CPf/CNPJ inválido");
+                throw new ArgumentException("CPF/CNPJ inválido");
             }
-
-            if (!this.IsEmailValid(model.Email))
+            else if (!new EmailValidator().IsEmailValid(model.Email))
             {
                 throw new ArgumentException("O e-mail do cliente não é válido.");
             }
@@ -83,15 +79,10 @@ namespace OrderService.Api.Service
             return this.customerRepository.Update(model);
         }
 
-        private bool IsEmailValid(string email)
-        {
-            return new EmailAddressAttribute().IsValid(email);
-        }
-
         private bool IsValidDocumentNumber(string documentNumber)
         {
             const int cnpjSize = 14;
-            const int cpfSize  = 11;
+            const int cpfSize = 11;
 
             if (documentNumber.All(char.IsDigit))
             {

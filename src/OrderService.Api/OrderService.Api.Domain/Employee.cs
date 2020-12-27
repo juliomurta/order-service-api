@@ -4,12 +4,14 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
-using System.Threading.Tasks;
+using OrderService.Api.Common.Extensions;
 
 namespace OrderService.Api.Domain
 {
     public class Employee
     {
+        private string documentNumber = string.Empty;
+
         [Key]
         public Guid Id { get; set; }
 
@@ -19,7 +21,18 @@ namespace OrderService.Api.Domain
 
         [Column(TypeName = "nvarchar(15)")]
         [Required(ErrorMessage = "O campo DocumentNumber é obrigatório")]
-        public string DocumentNumber { get; set; }
+        public string DocumentNumber 
+        { 
+            get
+            {
+                return this.documentNumber.RemoveCpfCnpjPunctuation();
+            }
+
+            set
+            {
+                this.documentNumber = value;
+            }
+        }
 
         [Column(TypeName = "datetime")]
         [Required(ErrorMessage = "O campo BirthDate é obrigatório")]

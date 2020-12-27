@@ -110,7 +110,7 @@ namespace OrderService.Api.Test
                 Name = "test test"
             };
 
-            this.AssertCreateCustomerException<ArgumentException>("CPf/CNPJ inválido", customer);
+            this.AssertCreateCustomerException<ArgumentException>("CPF/CNPJ inválido", customer);
         }
 
         [Fact]
@@ -123,7 +123,7 @@ namespace OrderService.Api.Test
                 Name = "test test"
             };
 
-            this.AssertCreateCustomerException<ArgumentException>("CPf/CNPJ inválido", customer);
+            this.AssertCreateCustomerException<ArgumentException>("CPF/CNPJ inválido", customer);
         }
 
         [Fact]
@@ -136,7 +136,7 @@ namespace OrderService.Api.Test
                 Name = "test test"
             };
 
-            this.AssertCreateCustomerException<ArgumentException>("CPf/CNPJ inválido", customer);
+            this.AssertCreateCustomerException<ArgumentException>("CPF/CNPJ inválido", customer);
         }
 
         [Fact]
@@ -149,7 +149,7 @@ namespace OrderService.Api.Test
                 Name = "test test"
             };
 
-            this.AssertCreateCustomerException<ArgumentException>("CPf/CNPJ inválido", customer);
+            this.AssertCreateCustomerException<ArgumentException>("CPF/CNPJ inválido", customer);
         }
 
         [Fact]
@@ -162,7 +162,7 @@ namespace OrderService.Api.Test
                 Name = "test test"
             };
 
-            this.AssertCreateCustomerException<ArgumentException>("CPf/CNPJ inválido", customer);
+            this.AssertCreateCustomerException<ArgumentException>("CPF/CNPJ inválido", customer);
         }
 
         [Fact]
@@ -175,7 +175,7 @@ namespace OrderService.Api.Test
                 Name = "test test"                
             };
 
-            this.AssertCreateCustomerException<ArgumentException>("CPf/CNPJ inválido", customer);
+            this.AssertCreateCustomerException<ArgumentException>("CPF/CNPJ inválido", customer);
         }
 
         [Fact]
@@ -188,7 +188,7 @@ namespace OrderService.Api.Test
                 Name = "test test"
             };
 
-            this.AssertCreateCustomerException<ArgumentException>("CPf/CNPJ inválido", customer);
+            this.AssertCreateCustomerException<ArgumentException>("CPF/CNPJ inválido", customer);
         }
 
         public void SaveCustomerWithInvalidDocumentNumber_CNPJ()
@@ -200,7 +200,7 @@ namespace OrderService.Api.Test
                 Name = "test test"
             };
 
-            this.AssertCreateCustomerException<ArgumentException>("CPf/CNPJ inválido", customer);
+            this.AssertCreateCustomerException<ArgumentException>("CPF/CNPJ inválido", customer);
         }
 
         [Fact]
@@ -213,7 +213,7 @@ namespace OrderService.Api.Test
                 Name = "test test"
             };
 
-            this.AssertCreateCustomerException<ArgumentException>("CPf/CNPJ inválido", customer);
+            this.AssertCreateCustomerException<ArgumentException>("CPF/CNPJ inválido", customer);
         }
 
         [Fact]
@@ -226,7 +226,7 @@ namespace OrderService.Api.Test
                 Name = "test test"
             };
 
-            this.AssertCreateCustomerException<ArgumentException>("CPf/CNPJ inválido", customer);
+            this.AssertCreateCustomerException<ArgumentException>("CPF/CNPJ inválido", customer);
         }
 
         [Fact]
