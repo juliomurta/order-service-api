@@ -21,6 +21,7 @@ using Microsoft.Extensions.PlatformAbstractions;
 using System.IO;
 using OrderService.Api.Service.Interface;
 using OrderService.Api.Service;
+using System.Net;
 
 namespace OrderService.Api
 {
@@ -39,7 +40,12 @@ namespace OrderService.Api
             services.AddMvc(options => 
             {
                 options.EnableEndpointRouting = false;
-            });            
+            });
+
+            services.Configure<ForwardedHeadersOptions>(options =>
+            {
+                options.KnownProxies.Add(IPAddress.Parse("34.209.27.182"));
+            });
 
             services.AddDbContext<OSContext>(options =>
             {
