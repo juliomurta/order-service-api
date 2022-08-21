@@ -1,0 +1,22 @@
+{
+  "dependencies": {
+    "mssql1": {
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/orderservice-apidbserver/databases/OrderService.Api_db",
+      "type": "mssql.azure",
+      "connectionId": "Data/OrderServiceData/ConnectionString",
+      "secretStore": "AzureAppSettings"
+    },
+    "mssql2": {
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/orderservice-apidbserver/databases/OrderServiceIdentity.Api_db",
+      "type": "mssql.azure",
+      "connectionId": "Data/OrderServiceIdentity/ConnectionString",
+      "secretStore": "AzureAppSettings"
+    },
+    "secrets1": {
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.KeyVault/vaults/OrderServiceApivault",
+      "type": "secrets.keyVault",
+      "connectionId": "ASPNETCORE_HOSTINGSTARTUP__KEYVAULT__CONFIGURATIONVAULT",
+      "secretStore": "AzureAppSettings"
+    }
+  }
+}
