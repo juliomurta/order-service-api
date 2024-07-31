@@ -42,10 +42,10 @@ namespace OrderService.Api
                 options.EnableEndpointRouting = false;
             });
 
-            services.Configure<ForwardedHeadersOptions>(options =>
+           /* services.Configure<ForwardedHeadersOptions>(options =>
             {
                 options.KnownProxies.Add(IPAddress.Parse("34.209.27.182"));
-            });
+            });*/
 
             services.AddDbContext<OSContext>(options =>
             {
