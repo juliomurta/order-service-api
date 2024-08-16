@@ -7,7 +7,7 @@ namespace OrderService.Api.Domain.Enum
 {
     public enum GenderEnum
     {
-        Male,
-        Female
+        Male = 1,
+        Female = 2
     }
 }
