@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc; 
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -37,15 +37,15 @@ namespace OrderService.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc(options => 
+            services.AddMvc(options =>
             {
                 options.EnableEndpointRouting = false;
             });
 
-           /* services.Configure<ForwardedHeadersOptions>(options =>
-            {
-                options.KnownProxies.Add(IPAddress.Parse("34.209.27.182"));
-            });*/
+            /* services.Configure<ForwardedHeadersOptions>(options =>
+             {
+                 options.KnownProxies.Add(IPAddress.Parse("34.209.27.182"));
+             });*/
 
             services.AddDbContext<OSContext>(options =>
             {
@@ -72,19 +72,23 @@ namespace OrderService.Api
             services.AddTransient<IEmployeeService, EmployeeService>();
             services.AddTransient<IOrderService, OsService>();
 
-            services.ConfigureApplicationCookie(options =>
+            /*services.ConfigureApplicationCookie(options =>
             {
                 options.Events.OnRedirectToLogin = context =>
                 {
                     context.Response.StatusCode = 401;
                     return Task.CompletedTask;
                 };
-            });
+            });*/
+
+            services.AddControllers().AddNewtonsoftJson(options =>
+                 options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+            );
 
             services.AddSwaggerGen(x =>
             {
                 x.SwaggerDoc("v1", new OpenApiInfo
-                { 
+                {
                     Title = "Ordem de Serviço - API",
                     Version = "v1",
                     Description = "Documentação da API de Ordens de Serviço",

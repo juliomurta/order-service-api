@@ -36,12 +36,18 @@ namespace OrderService.Api.Repositories
 
         public Employee Get(Func<Employee, bool> func)
         {
-            return this.Predicate().FirstOrDefault(func);
+            var employee = this.context.Employees.FirstOrDefault(func);
+            if (employee != null)
+            {
+                employee.Orders = this.context.Orders.Where(x => x.EmployeeId == employee.Id).ToList();
+            }
+
+            return employee;
         }
 
         public IEnumerable<Employee> Search(EmployeeFilter filter)
         {
-            var queryable = this.Predicate();
+            var queryable = this.context.Employees.AsQueryable();
 
             if (!string.IsNullOrEmpty(filter.Name))
             {
@@ -78,11 +84,11 @@ namespace OrderService.Api.Repositories
             return result.Entity;
         }
 
-        private IQueryable<Employee> Predicate()
+        /*private IQueryable<Employee> Predicate()
         {
             return this.context.Employees
                                .Include(x => x.Orders)
                                .AsQueryable();
-        }
+        }*/
     }
 }
