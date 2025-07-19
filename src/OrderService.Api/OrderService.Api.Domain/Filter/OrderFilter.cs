@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace OrderService.Api.Domain.Filter
 {
-    public class OrderFilter
+    public class OrderFilter : BaseFilter
     {
         public Guid EmployeeId { get; set; }
 

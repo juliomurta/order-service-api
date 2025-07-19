@@ -1,12 +1,9 @@
 ﻿using OrderService.Api.Domain.Enum;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace OrderService.Api.Domain.Filter
 {
-    public class EmployeeFilter
+    public class EmployeeFilter : BaseFilter
     {
         public string Name { get; set; }
 

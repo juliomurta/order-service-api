@@ -74,7 +74,7 @@ namespace OrderService.Api.Repositories
                 queryable = queryable.Where(x => x.BirthDate <= filter.EndBirthDate.Value);
             }
 
-            return queryable.ToList();
+            return queryable.Skip((filter.Page - 1) * filter.PageSize).Take(filter.PageSize).ToList();
         }
 
         public Employee Update(Employee model)
@@ -83,12 +83,5 @@ namespace OrderService.Api.Repositories
             this.context.SaveChanges();
             return result.Entity;
         }
-
-        /*private IQueryable<Employee> Predicate()
-        {
-            return this.context.Employees
-                               .Include(x => x.Orders)
-                               .AsQueryable();
-        }*/
     }
 }

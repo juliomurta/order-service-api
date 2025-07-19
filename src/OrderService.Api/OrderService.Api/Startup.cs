@@ -72,14 +72,14 @@ namespace OrderService.Api
             services.AddTransient<IEmployeeService, EmployeeService>();
             services.AddTransient<IOrderService, OsService>();
 
-            /*services.ConfigureApplicationCookie(options =>
+            services.ConfigureApplicationCookie(options =>
             {
                 options.Events.OnRedirectToLogin = context =>
                 {
                     context.Response.StatusCode = 401;
                     return Task.CompletedTask;
                 };
-            });*/
+            });
 
             services.AddControllers().AddNewtonsoftJson(options =>
                  options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore

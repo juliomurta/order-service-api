@@ -59,7 +59,7 @@ namespace OrderService.Api.Repositories
                 queryable = queryable.Where(x => x.Name.ToLower().Contains(filter.Name.ToLower()));
             }
 
-            return queryable.ToList();
+            return queryable.Skip((filter.Page - 1) * filter.PageSize).Take(filter.PageSize).ToList();
         }
 
         public Customer Update(Customer model)
