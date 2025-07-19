@@ -1,13 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using OrderService.Api.Domain;
 using OrderService.Api.Domain.Filter;
+using OrderService.Api.Model;
 using OrderService.Api.Service.Interface;
+using System;
+using System.Collections.Generic;
+using System.Formats.Tar;
+using System.IO;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace OrderService.Api.Controllers
 {
@@ -97,6 +100,34 @@ namespace OrderService.Api.Controllers
             catch (Exception ex)
             {
                 return BadRequest($"Error: { ex.Message }");
+            }
+        }
+
+
+        public IActionResult UploadDocument([FromBody] UploadFileViewModel uploadFileViewModel)
+        {
+            try
+            {
+                if (uploadFileViewModel == null)
+                {
+                    return BadRequest("Arguments cannot be null.");
+                }
+
+                string tempFolder = Path.Combine(Path.GetTempPath(), uploadFileViewModel.EmployeeId.ToString());
+                Directory.CreateDirectory(tempFolder);
+
+                var fileName = Path.Combine(tempFolder, uploadFileViewModel.FileName);
+
+                using (var fs = new FileStream(fileName, FileMode.CreateNew))
+                {
+                    fs.Write(uploadFileViewModel.FileAsByteArray, 0, uploadFileViewModel.FileAsByteArray.Length);
+                }
+
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest($"Error: {ex.Message}");
             }
         }
     }

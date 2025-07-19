@@ -9,7 +9,7 @@ namespace OrderService.Api.Model
     public class LoginViewModel
     {
         [Required(ErrorMessage = "Nome do usuário é obrigatório")]
-        public string Name { get; set; }
+        public string Username { get; set; }
 
         [Required(ErrorMessage = "Senha é obrigatória")]
         public string Password { get; set; }

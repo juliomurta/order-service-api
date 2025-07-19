@@ -58,7 +58,7 @@ namespace OrderService.Api.Repositories
                 queryable = queryable.Where(x => x.CustomerId == filter.CustomerId);
             }
 
-            return queryable.ToList();
+            return queryable.Skip((filter.Page - 1) * filter.PageSize).Take(filter.PageSize).ToList();
         }
 
         public Order Update(Order model)

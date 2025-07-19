@@ -26,12 +26,21 @@ namespace OrderService.Api.Controllers
         [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody] LoginViewModel credentials)
         {
-            if (ModelState.IsValid && await DoLogin(credentials))
+            try
             {
-                return Ok();
+                if (ModelState.IsValid && await DoLogin(credentials))
+                {
+                    return Ok();
+                }
+                else
+                {
+                    return Unauthorized();
+                }
             }
-
-            return BadRequest();
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
         [HttpPost("logout")]
@@ -41,9 +50,19 @@ namespace OrderService.Api.Controllers
             return Ok();
         }
 
+        [HttpGet("check")]
+        public async Task<IActionResult> Check()
+        {
+            if (User.Identity.IsAuthenticated)
+            {
+                return Ok(new { IsAuthenticated = true });
+            }
+            return Unauthorized(new { IsAuthenticated = false });
+        }
+
         private async Task<bool> DoLogin(LoginViewModel credentials)
         {
-            var user = await userManager.FindByNameAsync(credentials.Name);
+            var user = await userManager.FindByNameAsync(credentials.Username);
             if (user != null)
             {
                 await signInManager.SignOutAsync();
